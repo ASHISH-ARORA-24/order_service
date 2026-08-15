@@ -111,6 +111,11 @@ class OrderManager:
         if not items:
             raise ValueError("Cannot create order with empty cart")
 
+        # Validate item quantities
+        for item in items:
+            if item.quantity < 1:
+                raise ValueError(f"Item {item.product_id} has invalid quantity: {item.quantity}")
+
         # step 1  reserve stock; raises if any item cannot be reserved
         self._reserve_all_items(items)
 

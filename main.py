@@ -59,6 +59,9 @@ def handle_create_order(customer_id: str, items: list[dict]) -> dict:
     and creates the order. Any reservation failure comes back as a
     ValueError which we translate into an error response.
     """
+    if not items:
+        return {"success": False, "error": "Cannot create order: cart is empty"}
+
     order_items = [order_item_from_dict(item) for item in items]
 
     try:

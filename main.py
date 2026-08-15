@@ -65,6 +65,8 @@ def handle_create_order(customer_id: str, items: list[dict]) -> dict:
     order_items = [order_item_from_dict(item) for item in items]
 
     try:
+        # Validate item quantities before creating the order
+        validate_order_items(order_items)
         order = order_manager.create_order(customer_id, order_items)
     except ValueError as error:
         return {"success": False, "error": str(error)}
@@ -102,3 +104,11 @@ def handle_cancel_order(order_id: str) -> dict:
         return {"success": False, "error": str(error)}
 
     return {"success": True, "order": order_to_dict(order)}
+
+
+# New validation function to check item quantities
+
+def validate_order_items(items: list[dict]) -> None:
+    for item in items:
+        if item["quantity"] < 1:
+            raise ValueError(f"Validation failed: Item {item["product_id"]} has invalid quantity: {item["quantity"]}")

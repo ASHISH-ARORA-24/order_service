@@ -4,8 +4,8 @@
 # inputs, call into OrderManager, and format the response. Any real HTTP
 # framework (FastAPI, Flask) would wrap these into routes.
 
-from codeatlas.ecommerce.order_service.models import Order, OrderItem
-from codeatlas.ecommerce.order_service.order_manager import OrderManager
+from models import Order, OrderItem
+from order_manager import OrderManager
 
 
 # Single OrderManager instance shared across all handlers.

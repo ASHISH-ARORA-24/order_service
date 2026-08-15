@@ -1,0 +1,13 @@
+[project]
+name = "order-service"
+version = "0.1.0"
+description = "Order service — order lifecycle management for the ecommerce sample"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31.0",   # used by inventory_client.py — needed even in tests (import at top of module)
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]

@@ -10,8 +10,8 @@
 import uuid
 from datetime import datetime, timezone
 
-from codeatlas.ecommerce.order_service import inventory_client
-from codeatlas.ecommerce.order_service.models import Order, OrderItem, OrderStatus
+import inventory_client
+from models import Order, OrderItem, OrderStatus
 
 
 class OrderManager:
